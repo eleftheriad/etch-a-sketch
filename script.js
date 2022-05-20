@@ -1,4 +1,7 @@
 const container = document.querySelector(".container")
+const reset = document.querySelector(".btn-1");
+const clear = document.querySelector(".btn-2");
+
 create_game();
 
 
@@ -17,40 +20,29 @@ function create_game(){
         container.appendChild(div);
         console.log('hi');
     }
-    
-    
-    
-};
-
-let blocks = document.querySelectorAll('.blk');
+    let blocks = document.querySelectorAll('.blk');
     blocks.forEach((block) => {
         block.addEventListener('mouseover', () => {
             block.classList.add("hovered");
         });
     });
+    
+};
 
 
-const reset = document.querySelector(".btn-1");
 reset.addEventListener('click', function() {
     let blocks = document.querySelectorAll('.blk');
     blocks.forEach((block) => {
         block.classList.remove("hovered");
-    });
-    blocks.forEach((block) => {
         block.remove();
     });
-    reset_game();
+    create_game();
 });
 
-
-function reset_game(){
-    container.style.removeProperty("grid-template-columns");
-    container.style.removeProperty("grid-template-rows");
-    create_game();
+clear.addEventListener('click', function() {
     let blocks = document.querySelectorAll('.blk');
     blocks.forEach((block) => {
-        block.addEventListener('mouseover', () => {
-            block.classList.add("hovered");
-        });
+        block.classList.remove("hovered");
     });
-};
+});
+
